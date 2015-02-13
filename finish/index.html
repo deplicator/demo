@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+	<style>
+		nav {
+			margin: 30px 0;
+			padding: 0 50px;
+			height: 1px;
+		}
+		nav ul li {
+			display: inline;
+			border: 1px solid;
+			border-top-right-radius: 3px;
+			border-top-left-radius: 3px;
+			padding: 5px;
+			margin: 0;
+			cursor: hand;
+			cursor: pointer;
+			background: gainsboro;
+			width: 100px;
+			float: left;
+			text-align: center;
+		}
+		.selected {
+			border-bottom: none;
+			background: rgb(148, 159, 236);
+		}
+		section {
+			clear: both;
+
+			margin: 35px;
+			position: absolute;
+		}
+	</style>
+	<title>demo</title>
+	<!--<link rel="stylesheet" type="text/css" href="default.css">-->
+	<script src="libs/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+	<h1>Demo</h1>
+	<nav>
+		<ul>
+			<li id="mi-home" class="selected">home</li>
+			<li id="mi-stuff">stuff</li>
+			<li id="mi-about">about</li>
+		</ul>
+	</nav>
+
+	<!-- Main Page, shows first on page load. -->
+	<section id="home">
+		<h2>home</h2>
+		<button id="changeit">Change it</button>
+	</section>
+
+	<section id="stuff">
+		<h2>something else</h2>
+		<ul>
+			<li>one thing</li>
+			<li>another thing</li>
+			<li>something completely different</li>
+		</ul>
+	</section>
+
+	<!-- About Page, update this regularly -->
+	<section id="about">
+		<h2>about this site</h2>
+		<p>This is a demo of some stuff</p>
+	</section>
+
+	<!--<script src="main.js"></script>-->
+	<script>
+	// Runs on page load.
+	$(document).ready(function() {
+
+		// Show home page on start
+		$('section').hide().filter(':first').show();
+
+		// Handle tab navigation
+		$('nav ul li').click(function() {
+			$('li').removeClass('selected');
+			$(this).addClass('selected');
+			$('section').fadeOut(250);
+			var page = $(this).attr('id');
+			page = page.split('-');
+			$('#' + page[1]).fadeIn(500);
+		});
+
+		// Home page Change it! button
+		$('#changeit').click(function() {
+			if($('#home h2').css('color') == 'rgb(0, 0, 0)') {
+				$('#home h2').css('color', 'red');
+			} else {
+				$('#home h2').css('color', 'rgb(0, 0, 0)');
+			}
+		});
+	});
+	</script>
+</body>
+</html>

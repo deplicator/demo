@@ -1,0 +1,29 @@
+nav {
+	margin: 30px 0;
+	padding: 0 50px;
+	height: 1px;
+}
+nav ul li {
+	display: inline;
+	border: 1px solid;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	padding: 5px;
+	margin: 0;
+	cursor: hand;
+	cursor: pointer;
+	background: gainsboro;
+	width: 100px;
+	float: left;
+	text-align: center;
+}
+.selected {
+	border-bottom: none;
+	background: rgb(148, 159, 236);
+}
+section {
+	clear: both;
+
+	margin: 35px;
+	position: absolute;
+}
